@@ -38,7 +38,7 @@ export function useResizable(props: ResizableProps) {
   const { styleResize } = props;
 
   if (styleResize) {
-    for (let resize of styleResize) {
+    for (const resize of styleResize) {
       if (width <= resize.width) {
         return resize.style;
       }

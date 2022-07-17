@@ -28,7 +28,7 @@ export function Text(props: TextProps) {
     };
   }
 
-  if (props.variant == 'title') {
+  if (props.variant === 'title') {
     return (
       <h1
         {...props}
@@ -46,7 +46,7 @@ export function Text(props: TextProps) {
     );
   }
 
-  if (props.variant == 'subtitle') {
+  if (props.variant === 'subtitle') {
     return (
       <h1
         {...props}
@@ -64,7 +64,7 @@ export function Text(props: TextProps) {
     );
   }
 
-  if (props.variant == 'body') {
+  if (props.variant === 'body') {
     return (
       <h1
         {...props}

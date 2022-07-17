@@ -57,7 +57,7 @@ export function Select(props: SelectProps) {
         ...customStyle,
       }}
       onClick={() => {
-        if (isOpen == false) {
+        if (isOpen === false) {
           setOpen(true);
         }
       }}
@@ -117,7 +117,7 @@ export function Select(props: SelectProps) {
             }}
             style={{
               cursor: 'pointer',
-              color: null == props.selected?.id || -1 == props.selected?.id ? '#6125AC' : '#FFF',
+              color: null === props.selected?.id || -1 === props.selected?.id ? '#6125AC' : '#FFF',
             }}
             styleHover={{
               color: '#6125A9',
@@ -127,14 +127,14 @@ export function Select(props: SelectProps) {
           </Text>
 
           {props.items.filter(
-            (item) => item.name?.toLowerCase().includes(search.toString().toLowerCase()) || item.id == search,
-          ).length == 0 && (
+            (item) => item.name?.toLowerCase().includes(search.toString().toLowerCase()) || item.id === search,
+          ).length === 0 && (
             <Text variant="subtitle" style={customStyleItem}>
               No results
             </Text>
           )}
           {props.items
-            .filter((item) => item.name?.toLowerCase().includes(search.toString().toLowerCase()) || item.id == search)
+            .filter((item) => item.name?.toLowerCase().includes(search.toString().toLowerCase()) || item.id === search)
             .map((item) => (
               <Text
                 key={item.id}
@@ -146,7 +146,7 @@ export function Select(props: SelectProps) {
                 style={{
                   ...customStyleItem,
                   cursor: 'pointer',
-                  color: item.id == props.selected?.id ? '#6125AC' : '#FFF',
+                  color: item.id === props.selected?.id ? '#6125AC' : '#FFF',
                 }}
                 styleHover={{
                   color: '#6125A9',

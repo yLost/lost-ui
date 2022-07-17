@@ -30,7 +30,6 @@ export function Avatar(props: AvatarProps) {
         setImage(url);
         setLoading(false);
       } catch (err) {
-        console.error(err);
         setLoading(false);
       }
     }
