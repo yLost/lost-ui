@@ -7,6 +7,7 @@ export { Select } from './Select';
 export { Switcher } from './Switcher';
 export { Text } from './Text';
 export { Progress } from './Progress';
+export { LinkTo } from './Link';
 
 export { Spacing } from './Spacing';
 export * from './Svg';
