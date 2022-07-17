@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "npm run lint & npm run format & tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint",
@@ -28,6 +28,15 @@
     "url": "https://github.com/yLost/ylost-ui/issues"
   },
   "homepage": "https://github.com/yLost/ylost-ui#readme",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
   "devDependencies": {
     "@types/node": "^18.0.5",
     "prettier": "^2.7.1",
