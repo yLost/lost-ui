@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 
-export interface ResizableStyleProps {
-  width: number;
-  style: React.CSSProperties;
-}
+export type ResizableStyleProps = {
+  [key: string]: React.CSSProperties;
+  [value: symbol]: React.CSSProperties;
+};
 
 export interface ResizableProps extends React.HTMLAttributes<HTMLDivElement> {
-  styleResize?: ResizableStyleProps[];
+  styled: ResizableStyleProps;
+  styledHover?: React.CSSProperties;
+  isHovering?: boolean;
 }
 
 function getWindowDimensions() {
@@ -34,16 +36,32 @@ export default function useWindowDimensions() {
 
 export function useResizable(props: ResizableProps) {
   const { width } = useWindowDimensions();
+  const { styled, styledHover, isHovering } = props;
 
-  const { styleResize } = props;
+  let styleOnHover = {};
 
-  if (styleResize) {
-    for (const resize of styleResize) {
-      if (width <= resize.width) {
-        return resize.style;
-      }
-    }
+  if (styledHover && isHovering) {
+    styleOnHover = styledHover;
   }
 
-  return null;
+  if (styled) {
+    const keys = Object.keys(styled);
+
+    for (const key of keys) {
+      const maxWidth = Number.parseInt(key);
+      const style = styled[maxWidth];
+
+      if (width <= maxWidth) {
+        return {
+          ...styled['0'],
+          ...style,
+          ...styleOnHover,
+        };
+      }
+    }
+
+    return { ...styled['0'], ...styleOnHover };
+  }
+
+  return styleOnHover;
 }

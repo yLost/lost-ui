@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import React = require('react');
 import { ResizableProps, useResizable } from '../Resizable';
+import React = require('react');
 
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, ResizableProps {
   styleHover?: React.CSSProperties;
@@ -8,29 +8,23 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, Resizabl
 
 export function Box(props: BoxProps) {
   const [isHovering, setHovering] = useState<boolean>(false);
+  const { styled, styledHover, ...rest } = props;
 
-  let extraStyle: React.CSSProperties | undefined = props.style;
-
-  const styleResizabled = useResizable({ styleResize: props.styleResize });
-  if (styleResizabled) {
-    extraStyle = { ...extraStyle, ...styleResizabled };
-  }
-
-  if (isHovering && props.styleHover) {
-    extraStyle = { ...extraStyle, ...props.styleHover };
-  }
+  const style: any = useResizable({
+    styled,
+    styledHover,
+    isHovering,
+  });
 
   return (
     <div
-      {...props}
+      {...rest}
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: '2px',
         borderRadius: '4px',
-        background: '#24263A',
         padding: '10px',
-        ...extraStyle,
+        ...style,
       }}
       onMouseEnter={(event) => {
         setHovering(true);

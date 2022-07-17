@@ -92,20 +92,22 @@ export function Select(props: SelectProps) {
       {/* Selector */}
       {isOpen && (
         <Box
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            padding: '10px 14px',
-            gap: '4px',
-            width: props.width + 'px',
-            maxHeight: '200px',
-            overflowY: 'auto',
-            boxShadow: isOpen ? '0px 2px 4px rgba(0, 0, 0, 0.25)' : '0px 0px 4px rgba(0, 0, 0, 0.25)',
-            zIndex: 1000,
-            ...customStyleList,
+          styled={{
+            0: {
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '10px 14px',
+              gap: '4px',
+              width: props.width + 'px',
+              maxHeight: '200px',
+              overflowY: 'auto',
+              boxShadow: isOpen ? '0px 2px 4px rgba(0, 0, 0, 0.25)' : '0px 0px 4px rgba(0, 0, 0, 0.25)',
+              zIndex: 1000,
+              ...customStyleList,
+            },
           }}
         >
           <Text
