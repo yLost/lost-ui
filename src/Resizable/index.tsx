@@ -48,7 +48,7 @@ export function useResizable(props: ResizableProps) {
     const keys = Object.keys(styled);
 
     for (const key of keys) {
-      const maxWidth = Number.parseInt(key);
+      const maxWidth = Number.parseInt(key, 10);
       const style = styled[maxWidth];
 
       if (width <= maxWidth) {
