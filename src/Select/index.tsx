@@ -65,23 +65,26 @@ export function Select(props: SelectProps) {
       {/* Filter */}
       {isOpen && (
         <Input
+          type="text"
           placeholder="Type a filter"
           value={search}
           onText={(text) => setSearch(text)}
-          style={{
-            borderRadius: '8px 8px 0 0',
-            position: 'absolute',
-            bottom: '30px',
-            left: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            padding: '10px 14px',
-            gap: '4px',
-            backgroundColor: '#24263A',
-            width: props.width + 'px',
-            height: '30px',
-            zIndex: 1000,
-            ...customStyle,
+          styled={{
+            0: {
+              borderRadius: '8px 8px 0 0',
+              position: 'absolute',
+              bottom: '30px',
+              left: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '10px 14px',
+              gap: '4px',
+              backgroundColor: '#24263A',
+              width: props.width + 'px',
+              height: '30px',
+              zIndex: 1000,
+              ...customStyle,
+            },
           }}
         ></Input>
       )}

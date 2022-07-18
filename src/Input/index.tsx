@@ -1,25 +1,47 @@
 import React = require('react');
+import { ResizableProps, useResizable } from '../Resizable';
 
-export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface InputProps extends ResizableProps {
+  type: React.HTMLInputTypeAttribute;
   placeholder: string;
   value: string | number;
   onText: (value: string | number) => void;
 }
 
 export function Input(props: InputProps) {
+  const [isHovering, setHovering] = React.useState<boolean>(false);
+  const { styled, styledHover, ...rest } = props;
+
+  const style: any = useResizable({
+    styled,
+    styledHover,
+    isHovering,
+  });
+
   return (
     <input
+      {...rest}
       style={{
-        padding: '10px 14px',
+        padding: '5px 10px',
         color: '#FFF',
-        borderRadius: '8px',
-        backgroundColor: '#1D1E2C',
+        borderRadius: '2px',
+        backgroundColor: 'transparent',
         boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
-        ...props.style,
+        border: "none",
+        outline: 'none',
+        ...style,
       }}
       placeholder={props.placeholder}
       value={props.value}
       onChange={(e) => props.onText(e.target.value)}
+      onMouseEnter={(event) => {
+        setHovering(true);
+        props.onMouseEnter?.(event);
+      }}
+      onMouseLeave={(event) => {
+        setHovering(false);
+        props.onMouseLeave?.(event);
+      }}
     ></input>
   );
 }

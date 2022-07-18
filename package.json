@@ -1,6 +1,6 @@
 {
   "name": "ylost-ui",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "A prototype ui for my personal projects",
   "author": "Lost | Fernando",
   "main": "lib/index.js",
